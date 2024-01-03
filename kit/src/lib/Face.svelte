@@ -11,7 +11,9 @@
 	<div>{face.emoji}</div>
 
 	{#if typeof navigator !== 'undefined' && 'share' in navigator}
-		<button>Share</button>
+		<button on:click={share}>Share</button>
+	{:else}
+		<a href={urlFor(face.image).auto('format').url()}>Download</a>
 	{/if}
 </article>
 
@@ -19,4 +21,16 @@
 	import { urlFor } from '$utils/sanity'
 
 	export let face: Sanity.Face
+
+	async function share() {
+		const url = urlFor(face.image).height(200).format('png').forceDownload(face.emoji).url()
+
+		const response = await fetch(url)
+		const blob = await response.blob()
+		const file = new File([blob], `${face.emoji}.png`, { type: blob.type })
+
+		return await navigator.share({
+			files: [file],
+		})
+	}
 </script>
