@@ -1,7 +1,5 @@
-<header class="p-4">
-	<Logo class="mx-auto" />
-</header>
+<FaceList />
 
 <script>
-	import Logo from '$lib/Logo.svelte'
+	import FaceList from '$lib/FaceList.svelte'
 </script>
