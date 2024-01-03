@@ -7,8 +7,22 @@
 @layer base {}
 
 @layer components {
+	/* ctas */
+
+	.action {
+		display: inline-flex;
+		padding: .2em .8em;
+		background: theme('colors.blue');
+		color: #fff;
+		clip-path: polygon(0 0, 100% 0, 100% 0, 100% calc(100% - .5em), calc(100% - .5em) 100%, 0 100%);
+
+		@apply transition-[filter] hover:brightness-125;
+	}
+
+	/* layout */
+
 	.section {
-		@apply max-w-screen-xl mx-auto p-8 max-md:px-4 md:py-12;
+		@apply max-w-screen-lg mx-auto p-8 max-md:px-4 md:py-12;
 	}
 }
 
