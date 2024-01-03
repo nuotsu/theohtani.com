@@ -16,10 +16,11 @@ declare global {
 		// documents
 
 		type Face = {
+			_id: string
 			image: Image
-			emoji: string
+			emojis: string
 			date?: string
-			source: string
+			source?: string
 		}
 
 		// objects

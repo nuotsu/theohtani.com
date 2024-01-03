@@ -1,6 +1,6 @@
 <Header />
 
-<main class="grow">
+<main class="my-auto">
 	<slot />
 </main>
 

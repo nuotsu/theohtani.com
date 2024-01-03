@@ -1,5 +1,5 @@
 <FaceList />
 
 <script>
-	import FaceList from '$lib/FaceList.svelte'
+	import FaceList from '$lib/faces/FaceList.svelte'
 </script>

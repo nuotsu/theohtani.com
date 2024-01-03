@@ -18,11 +18,13 @@ export default defineType({
 			name: 'image',
 			type: 'image',
 			fieldset: 'face',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
-			name: 'emoji',
+			name: 'emojis',
 			type: 'string',
 			fieldset: 'face',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'date',
@@ -35,7 +37,7 @@ export default defineType({
 	],
 	preview: {
 		select: {
-			title: 'emoji',
+			title: 'emojis',
 			subtitle: 'date',
 			media: 'image',
 		},
