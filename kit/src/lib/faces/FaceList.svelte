@@ -1,15 +1,17 @@
 <section class="space-y-4 text-center">
-	<h2>Recent faces of Shohei Ohtani</h2>
+	<header>
+		<h2 class="h2">Recent faces of Shohei Ohtani</h2>
 
-	{#if $emoji}
-		<output class="text-xl">
-			<Emoji emoji={$emoji} />
-		</output>
-	{/if}
+		{#if $emoji}
+			<output class="block text-xl text-blue anim-fade-to-r [&_button]:anim-fade">
+				Current: {#key $emoji}<Emoji emoji={$emoji} />{/key}
+			</output>
+		{/if}
+	</header>
 
-	<ul class="flex gap-4 overflow-x-auto before:m-auto after:m-auto">
+	<ul class="flex gap-4 pb-3 overflow-x-auto before:m-auto after:m-auto">
 		{#each filteredFaces as face (face._id)}
-			<li class="max-w-[100px]">
+			<li class="max-w-[100px] [&>*]:anim-fade">
 				<Face {face} />
 			</li>
 		{/each}

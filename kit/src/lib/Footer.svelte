@@ -1,11 +1,11 @@
 <footer class="section py-8 grid gap-4 text-center">
-	<p>
-		<small class="text-black/40">
+	<p class="leading-none text-black/30 text-xs text-justify">
+		<small>
 			Disclaimer: This fan site is not officially affiliated with the Los Angeles Dodgers or Shohei
 			Ohtani. All images and content used on this website are for informational and entertainment
 			purposes only. All rights to the respective trademarks and copyrights are owned by their
 			respective owners. If you have any concerns about the content used on this site, please
-			contact us for prompt removal or proper attribution.
+			<a href="mailto:xzmaru+ohtani@gmail.com">contact us</a> for prompt removal or proper attribution.
 		</small>
 	</p>
 	<p>&copy; {new Date().getFullYear()} <a href="/">TheOhtani.com</a></p>

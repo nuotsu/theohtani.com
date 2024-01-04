@@ -26,10 +26,6 @@
 </figure>
 
 <style>
-	img {
-		filter: drop-shadow(0 0.15em 0.15em #0004);
-	}
-
 	.emojis:has(button:hover) :global(button:not(:hover)) {
 		opacity: 0.5;
 	}
@@ -41,12 +37,16 @@
 
 	export let face: Sanity.Face
 
-	const downloadUrl = urlFor(face.image).height(300).format('png').forceDownload(face.emojis).url()
+	const downloadUrl = urlFor(face.image)
+		.height(300)
+		.format('png')
+		.forceDownload(face.emojis + '.png')
+		.url()
 
 	async function share() {
 		const response = await fetch(downloadUrl)
 		const blob = await response.blob()
-		const file = new File([blob], `${face.emojis}.png`, { type: blob.type })
+		const file = new File([blob], face.emojis + '.png', { type: blob.type })
 
 		return await navigator.share({
 			files: [file],
