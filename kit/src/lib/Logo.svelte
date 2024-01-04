@@ -1,7 +1,7 @@
 <a
 	href="/"
 	class="relative max-w-max grid uppercase text-blue text-center font-bold {className}"
-	aria-label="TheOhtani.com"
+	aria-label={$page.data.site.title}
 >
 	<small>The</small>
 	<CurvedText
@@ -16,6 +16,7 @@
 </a>
 
 <script lang="ts">
+	import { page } from '$app/stores'
 	import CurvedText from '$lib/CurvedText.svelte'
 
 	const { class: className } = $$props as {

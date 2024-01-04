@@ -8,5 +8,9 @@
 			<a href="mailto:xzmaru+ohtani@gmail.com">contact us</a> for prompt removal or proper attribution.
 		</small>
 	</p>
-	<p>&copy; {new Date().getFullYear()} <a href="/">TheOhtani.com</a></p>
+	<p>&copy; {new Date().getFullYear()} <a href="/">{$page.data.site.title}</a></p>
 </footer>
+
+<script lang="ts">
+	import { page } from '$app/stores'
+</script>

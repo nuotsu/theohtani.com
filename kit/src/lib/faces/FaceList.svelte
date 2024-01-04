@@ -24,7 +24,7 @@
 	import Face from './Face.svelte'
 	import { emoji } from './store'
 
-	$: filteredFaces = ($page.data.faces as Sanity.Face[]).filter(
+	$: filteredFaces = $page.data.faces.filter(
 		(face) => !$emoji || Array.from(face.emojis).includes($emoji),
 	)
 </script>

@@ -7,13 +7,22 @@ declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
-		// interface PageData {}
+		interface PageData {
+			site: Sanity.Site
+			faces: Sanity.Face[]
+		}
 		// interface PageState {}
 		// interface Platform {}
 	}
 
 	namespace Sanity {
 		// documents
+
+		type Site = {
+			title: string
+			description: string
+			ogimage: Image
+		}
 
 		type Face = {
 			_id: string
