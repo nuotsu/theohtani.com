@@ -1,0 +1,32 @@
+import { defineField, defineType } from 'sanity'
+import { VscFileMedia } from 'react-icons/vsc'
+
+export default defineType({
+	name: 'hero.image',
+	title: 'Hero (image)',
+	icon: VscFileMedia,
+	type: 'object',
+	fields: [
+		defineField({
+			name: 'image',
+			type: 'image',
+			fields: [
+				defineField({
+					name: 'alt',
+					type: 'string',
+				}),
+			],
+		}),
+	],
+	preview: {
+		select: {
+			title: 'image.alt',
+			media: 'image',
+		},
+		prepare: ({ title, media }) => ({
+			title,
+			subtitle: 'Hero (image)',
+			media,
+		}),
+	},
+})

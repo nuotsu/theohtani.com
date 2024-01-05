@@ -1,6 +1,8 @@
 {#each modules as module (module._type)}
 	{#if module._type === 'face-list'}
 		<FaceList {...module} />
+	{:else if module._type === 'hero.image'}
+		<HeroImage {...module} />
 	{:else if module._type === 'news-feed'}
 		<NewsFeed {...module} />
 	{:else}
@@ -10,6 +12,7 @@
 
 <script lang="ts">
 	import FaceList from '$lib/modules/faces/FaceList.svelte'
+	import HeroImage from '$lib/modules/HeroImage.svelte'
 	import NewsFeed from './NewsFeed.svelte'
 
 	export let modules: Sanity.Module[] = []

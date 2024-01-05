@@ -57,7 +57,10 @@ declare global {
 
 		// objects
 
-		type Image = SanityAssetDocument
+		type Image = SanityAssetDocument &
+			Partial<{
+				alt: string
+			}>
 
 		type Metadata = {
 			title: string
