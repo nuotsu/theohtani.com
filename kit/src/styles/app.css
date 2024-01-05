@@ -17,6 +17,10 @@
 		@apply text-2xl;
 	}
 
+	.h3 {
+		@apply text-xl;
+	}
+
 	/* ctas */
 
 	.action {
@@ -37,6 +41,11 @@
 }
 
 @layer utilities {
+	.full-bleed {
+		width: 100vw;
+		margin-inline: calc(50% - 50vw);
+	}
+
 	/* animations */
 
 	@keyframes anim-fade {

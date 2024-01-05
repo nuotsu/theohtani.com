@@ -1,5 +1,5 @@
 <footer class="section py-8 grid gap-4 text-center">
-	<p class="leading-none text-black/30 text-xs text-justify">
+	<p class="max-w-screen-sm mx-auto leading-none text-black/30 text-xs text-justify">
 		<small>
 			Disclaimer: This fan site is not officially affiliated with the Los Angeles Dodgers or Shohei
 			Ohtani. All images and content used on this website are for informational and entertainment

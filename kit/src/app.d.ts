@@ -8,11 +8,28 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		interface PageData {
+			// layout
 			site: Sanity.Site
 			faces: Sanity.Face[]
+			// page
+			news: News[]
 		}
 		// interface PageState {}
 		// interface Platform {}
+
+		type News = {
+			id: number
+			headline: string
+			url: string
+			source: string
+			image: {
+				alt: string
+				width: number
+				height: number
+				url: string
+			}
+			published: string
+		}
 	}
 
 	namespace Sanity {

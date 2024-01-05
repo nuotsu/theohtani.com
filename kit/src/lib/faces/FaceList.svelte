@@ -1,4 +1,4 @@
-<section class="space-y-4 text-center">
+<section class="section space-y-4 text-center">
 	<header>
 		<h2 class="h2">Recent faces of Shohei Ohtani</h2>
 
@@ -9,7 +9,9 @@
 		{/if}
 	</header>
 
-	<ul class="flex gap-4 pb-3 overflow-x-auto before:m-auto after:m-auto">
+	<ul
+		class="flex gap-4 pb-3 overflow-x-auto before:m-auto after:m-auto max-md:full-bleed max-md:px-4"
+	>
 		{#each filteredFaces as face (face._id)}
 			<li class="max-w-[100px] [&>*]:anim-fade">
 				<Face {face} />

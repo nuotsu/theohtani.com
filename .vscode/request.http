@@ -1,0 +1,8 @@
+GET https://api-app.espn.com/allsports/apis/v1/now?region=us&lang=en&contentorigin=espn&limit=5&content=story,blog,recap,theundefeated,fivethirtyeight,video&contentcategories=04a76996-4a5c-456d-8022-a9d45e3ff933&enable=peers,header&offset=10
+
+###
+
+GET https://api-app.espn.com/allsports/apis/v1/now
+	?content=story,blog,recap,video
+	&contentcategories=04a76996-4a5c-456d-8022-a9d45e3ff933
+	&enable=peers,header
