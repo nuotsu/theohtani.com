@@ -9,6 +9,8 @@ const structure: StructureResolver = (S, context) =>
 		.title('Content')
 		.items([
 			singleton(S, 'Site', 'site').icon(VscServerProcess),
+			list(S, 'Pages', 'page'),
+			S.divider(),
 			list(S, 'Faces', 'face').icon(MdOutlineFaceRetouchingNatural),
 		])
 

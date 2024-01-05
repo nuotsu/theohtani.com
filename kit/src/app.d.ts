@@ -41,6 +41,12 @@ declare global {
 			ogimage: Image
 		}
 
+		type Page = {
+			title: string
+			modules?: Module[]
+			metadata: Metadata
+		}
+
 		type Face = {
 			_id: string
 			image: Image
@@ -52,6 +58,19 @@ declare global {
 		// objects
 
 		type Image = SanityAssetDocument
+
+		type Metadata = {
+			title: string
+			description: string
+			slug: {
+				current: string
+			}
+		}
+
+		type Module = {
+			_type: string
+			_key: string
+		}
 	}
 }
 

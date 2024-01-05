@@ -1,11 +1,6 @@
 <section class="section space-y-4">
-	<header>
-		<h2 class="h2">Recent Shohei Ohtani News</h2>
-		<p class="text-sm">
-			<a href="https://www.espn.com/search/_/type/articles/q/shohei%20ohtani" target="_blank">
-				Read more on ESPN.com
-			</a>
-		</p>
+	<header class="richtext">
+		<PortableText value={content} components={{}} />
 	</header>
 
 	<ul class="flex gap-4 pb-3 snap-x snap-mandatory overflow-x-auto max-md:full-bleed max-md:px-4">
@@ -36,13 +31,22 @@
 </section>
 
 <style lang="postcss">
-	a:hover {
-		color: theme('colors.blue');
+	header :global(p > a:only-child) {
+		font-size: theme('fontSize.sm');
+
+		&:hover {
+			color: theme('colors.blue');
+		}
 	}
 </style>
 
 <script lang="ts">
+	import { PortableText } from '@portabletext/svelte'
 	import { page } from '$app/stores'
+
+	const { content } = $$props as Partial<{
+		content: any
+	}>
 
 	const { format } = new Intl.DateTimeFormat('en-US', {
 		year: 'numeric',
