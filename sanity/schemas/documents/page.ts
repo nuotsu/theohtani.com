@@ -12,7 +12,7 @@ export default defineType({
 		defineField({
 			name: 'modules',
 			type: 'array',
-			of: [{ type: 'news-feed' }],
+			of: [{ type: 'face-list' }, { type: 'news-feed' }],
 		}),
 		defineField({
 			name: 'metadata',

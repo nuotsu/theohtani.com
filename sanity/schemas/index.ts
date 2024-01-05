@@ -7,6 +7,7 @@ import face from './documents/face'
 import metadata from './objects/metadata'
 
 // modules
+import faceList from './modules/face-list'
 import newsFeed from './modules/news-feed'
 
 export const schemaTypes = [
@@ -19,5 +20,6 @@ export const schemaTypes = [
 	metadata,
 
 	// modules
+	faceList,
 	newsFeed,
 ]

@@ -10,11 +10,6 @@ export default defineType({
 			type: 'string',
 		}),
 		defineField({
-			name: 'description',
-			type: 'text',
-			rows: 3,
-		}),
-		defineField({
 			name: 'ogimage',
 			title: 'og:image',
 			type: 'image',

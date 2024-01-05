@@ -37,7 +37,6 @@ declare global {
 
 		type Site = {
 			title: string
-			description: string
 			ogimage: Image
 		}
 

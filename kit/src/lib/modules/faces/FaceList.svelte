@@ -1,6 +1,6 @@
 <section class="section space-y-4 text-center">
-	<header>
-		<h2 class="h2">Recent faces of Shohei Ohtani</h2>
+	<header class="richtext">
+		<PortableText value={content} components={{}} />
 
 		{#if $emoji}
 			<output class="block text-xl text-blue anim-fade-to-r [&_button]:anim-fade">
@@ -22,9 +22,14 @@
 
 <script lang="ts">
 	import { page } from '$app/stores'
+	import { PortableText } from '@portabletext/svelte'
 	import Emoji from './Emoji.svelte'
 	import Face from './Face.svelte'
 	import { emoji } from './store'
+
+	const { content } = $$props as Partial<{
+		content: any
+	}>
 
 	$: filteredFaces = $page.data.faces.filter(
 		(face) => !$emoji || Array.from(face.emojis).includes($emoji),
