@@ -1,8 +1,11 @@
-<figure>
+<picture>
 	{#if image}
 		{@const { width, height } = getImageDimensions(image)}
 
+		<source srcset={urlFor(image).size(800, 500).auto('format').url()} media="(width <= 640px)" />
+
 		<img
+			class="object-cover"
 			src={urlFor(image).width(1600).auto('format').url()}
 			alt={image.alt}
 			{width}
@@ -11,7 +14,7 @@
 			draggable="false"
 		/>
 	{/if}
-</figure>
+</picture>
 
 <script lang="ts">
 	import { urlFor } from '$utils/sanity'

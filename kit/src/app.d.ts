@@ -1,6 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 
-import type { SanityAssetDocument } from '@sanity/client'
+import type { SanityImageAssetDocument } from '@sanity/client'
 
 // for information about these interfaces
 declare global {
@@ -57,7 +57,7 @@ declare global {
 
 		// objects
 
-		type Image = SanityAssetDocument &
+		type Image = SanityImageAssetDocument &
 			Partial<{
 				alt: string
 			}>
