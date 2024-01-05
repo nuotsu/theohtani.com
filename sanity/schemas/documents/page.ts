@@ -12,7 +12,12 @@ export default defineType({
 		defineField({
 			name: 'modules',
 			type: 'array',
-			of: [{ type: 'face-list' }, { type: 'hero.image' }, { type: 'news-feed' }],
+			of: [
+				{ type: 'face-list' },
+				{ type: 'hero.image' },
+				{ type: 'jersey-generator' },
+				{ type: 'news-feed' },
+			],
 		}),
 		defineField({
 			name: 'metadata',

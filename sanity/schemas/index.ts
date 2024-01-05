@@ -9,6 +9,7 @@ import metadata from './objects/metadata'
 // modules
 import faceList from './modules/face-list'
 import heroImage from './modules/hero.image'
+import jerseyGenerator from './modules/jersey-generator'
 import newsFeed from './modules/news-feed'
 
 export const schemaTypes = [
@@ -23,5 +24,6 @@ export const schemaTypes = [
 	// modules
 	faceList,
 	heroImage,
+	jerseyGenerator,
 	newsFeed,
 ]
