@@ -12,7 +12,7 @@
 		{#each $page.data.news as news}
 			<li class="snap-start scroll-ml-4 grow-0 shrink-0 basis-[min(80vw,300px)]">
 				<a class="group grid gap-2" href={news.url} target="_blank">
-					<figure class="transition-[filter] group-hover:brightness-125">
+					<figure class="transition-[filter] group-hover:brightness-125 bg-blue/10">
 						<img
 							class="aspect-video w-full max-w-[300px] object-cover"
 							src={news.image.url}

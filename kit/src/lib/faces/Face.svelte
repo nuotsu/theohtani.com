@@ -1,5 +1,6 @@
-<figure>
+<figure class="group">
 	<img
+		class="transition-[filter] group-has-[.action:hover]:brightness-125"
 		src={urlFor(face.image).size(200, 200).auto('format').url()}
 		alt={face.emojis}
 		width={200}
