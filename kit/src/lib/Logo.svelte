@@ -5,6 +5,7 @@
 >
 	<small>The</small>
 	<CurvedText
+		id="ohtani"
 		class="h-[2em] mx-auto -mt-1 -mb-3 fill-blue text-2xl tracking-tighter"
 		text="Ohtani"
 		width={80}

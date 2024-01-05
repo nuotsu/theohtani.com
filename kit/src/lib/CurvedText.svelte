@@ -1,11 +1,11 @@
 <svg class={className} viewBox="0 0 {width} {height}">
 	<path
 		fill="transparent"
-		id="curve"
-		d="M 0 {height} Q {width / 2} {height * 0.5} {width} {height}"
+		{id}
+		d="M 0 {height} Q {width / 2} {height * curvature} {width} {height}"
 	/>
 	<text>
-		<textPath href="#curve" text-anchor="middle" startOffset="50%">
+		<textPath href="#{id}" text-anchor="middle" startOffset="50%">
 			{text}
 		</textPath>
 	</text>
@@ -13,14 +13,17 @@
 
 <script lang="ts">
 	const {
+		id,
 		text,
 		width = 100,
 		height = 100,
+		curvature = 0.5,
 		class: className = '',
 	} = $$props as {
 		text: string
 		width: number
 		height: number
+		curvature: number
 		class: string
 	}
 </script>

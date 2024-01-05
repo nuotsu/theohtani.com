@@ -14,5 +14,10 @@ export default defineType({
 			title: 'og:image',
 			type: 'image',
 		}),
+		defineField({
+			name: 'disclaimer',
+			type: 'array',
+			of: [{ type: 'block' }],
+		}),
 	],
 })
