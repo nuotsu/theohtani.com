@@ -17,16 +17,20 @@
 @layer components {
 	/* typography */
 
+	._h {
+		text-wrap: balance;
+	}
+
 	.h1 {
-		@apply text-3xl;
+		@apply _h text-3xl;
 	}
 
 	.h2 {
-		@apply text-2xl;
+		@apply _h text-2xl;
 	}
 
 	.h3 {
-		@apply text-xl;
+		@apply _h text-xl;
 	}
 
 	/* ctas */
@@ -43,7 +47,11 @@
 		background: theme('colors.blue');
 		color: #fff;
 
-		@apply transition-[filter] hover:brightness-125 clipped;
+		@apply clipped;
+
+		&[href] {
+			@apply transition-[filter] hover:brightness-125;
+		}
 	}
 
 	/* inputs */
@@ -52,7 +60,7 @@
 		padding: .2em .8em;
 		border-radius: 0;
 		outline: none;
-		@apply border focus:border-blue focus:ring ring-blue/20;
+		@apply border hover:border-blue/50 focus:border-blue focus:ring ring-blue/20;
 	}
 
 	/* layout */

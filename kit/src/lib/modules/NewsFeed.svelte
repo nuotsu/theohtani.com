@@ -7,26 +7,24 @@
 		{#each $page.data.news as news}
 			<li class="scroll-ml-4">
 				<a class="group grid gap-2" href={news.url} target="_blank">
-					<figure class="transition-[filter] group-hover:brightness-125 bg-blue/10">
+					<figure class="relative bg-blue/10">
 						<img
-							class="aspect-video w-full max-w-[300px] object-cover"
+							class="aspect-video w-full max-w-[300px] object-cover transition-[filter] group-hover:brightness-125"
 							src={news.image.url}
 							alt={news.image.alt}
 							width={news.image.width}
 							height={news.image.height}
 							loading="lazy"
 						/>
+
+						<time class="absolute right-2 -bottom-2 action text-xs" datetime={news.published}>
+							{format(new Date(news.published))}
+						</time>
 					</figure>
 
 					<h3 class="h3 font-bold text-blue line-clamp-2">
 						{news.headline}
 					</h3>
-
-					<p class="text-sm">
-						<time datetime={news.published}>
-							{format(new Date(news.published))}
-						</time>
-					</p>
 				</a>
 			</li>
 		{/each}

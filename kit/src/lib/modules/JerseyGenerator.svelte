@@ -2,7 +2,7 @@
 	<header class="richtext">
 		<PortableText value={content} components={{}} />
 
-		<figure class="carousel gap-px [--size:100px] mt-4">
+		<figure class="carousel gap-px [--size:100px] mt-4" bind:this={carousel}>
 			{#if loading}
 				<div class="grid place-content-center bg-blue text-white animate-pulse">Generating...</div>
 			{/if}
@@ -21,27 +21,23 @@
 		</figure>
 	</header>
 
-	<form class="grid grid-cols-2 gap-4" on:submit|preventDefault={generateJersey}>
-		<label class="col-span-full">
-			<p>OpenAI API key: <small>Use DALL·E 3 for better results</small></p>
+	<form class="grid sm:grid-cols-2 gap-4" on:submit|preventDefault={generateJersey}>
+		<label>
+			Name on jersey:
 			<input
-				class="input"
-				name="apiKey"
-				type="password"
-				placeholder="ski-{'*'.repeat(48)}"
+				class="input text-xl"
+				name="name"
+				type="text"
+				placeholder="OHTANI"
+				maxlength="20"
 				required
 			/>
 		</label>
 
 		<label>
-			Name on jersey:
-			<input class="input" name="name" type="text" placeholder="OHTANI" maxlength="15" required />
-		</label>
-
-		<label>
 			Jersey number:
 			<input
-				class="input"
+				class="input text-xl"
 				name="number"
 				type="number"
 				placeholder="17"
@@ -49,6 +45,11 @@
 				max="9999"
 				required
 			/>
+		</label>
+
+		<label class="col-span-full">
+			<p>OpenAI API key: <small>Use DALL·E 3 for better results</small></p>
+			<input class="input" name="apiKey" type="password" required />
 		</label>
 
 		<button class="action gap-1 text-lg col-span-full" disabled={loading}>
@@ -83,6 +84,8 @@
 		images: Sanity.Image[]
 	}>
 
+	let carousel: HTMLElement
+
 	let loading = false
 	let urls: string[] = []
 	let error = false
@@ -100,10 +103,14 @@
 
 		loading = true
 
+		setTimeout(() => {
+			carousel.scrollTo({ left: 0, behavior: 'smooth' })
+		}, 50)
+
 		try {
 			const response = await openai.images.generate({
 				model: 'dall-e-3',
-				prompt: `a photorealistic product photography shot of a Dodgers Jersey (back-side)
+				prompt: `a photorealistic product photography shot of a single Dodgers Jersey (back-side)
 				with the name "${data.get('name')}" in all caps and the number "${data.get('number')}".
 				The jersey is laid on a table with a blue backdrop.
 				The photograph is slightly angled for aesthetic purposes, and should not be a 3D render but extremely photorealistic.`,

@@ -1,5 +1,5 @@
 <footer class="section py-8 grid gap-8 text-center">
-	<div class="flex items-end justify-between gap-8">
+	<div class="flex max-md:flex-col items-center md:items-end justify-between gap-x-8 gap-y-4">
 		<Logo />
 
 		<nav class="[&_a:hover]:text-blue text-2xl">
