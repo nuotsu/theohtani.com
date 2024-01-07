@@ -4,7 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {}
+@layer base {
+	::selection {
+		@apply bg-blue text-white;
+	}
+
+	html {
+		caret-color: theme('colors.blue');
+	}
+}
 
 @layer components {
 	/* typography */
@@ -23,6 +31,10 @@
 
 	/* ctas */
 
+	.clipped {
+		clip-path: polygon(0 0, 100% 0, 100% 0, 100% calc(100% - .5em), calc(100% - .5em) 100%, 0 100%);
+	}
+
 	.action {
 		display: inline-flex;
 		align-items: center;
@@ -30,9 +42,17 @@
 		padding: .2em .8em;
 		background: theme('colors.blue');
 		color: #fff;
-		clip-path: polygon(0 0, 100% 0, 100% 0, 100% calc(100% - .5em), calc(100% - .5em) 100%, 0 100%);
 
-		@apply transition-[filter] hover:brightness-125;
+		@apply transition-[filter] hover:brightness-125 clipped;
+	}
+
+	/* inputs */
+
+	.input {
+		padding: .2em .8em;
+		border-radius: 0;
+		outline: none;
+		@apply border focus:border-blue focus:ring ring-blue/20;
 	}
 
 	/* layout */
@@ -46,6 +66,17 @@
 	.full-bleed {
 		width: 100vw;
 		margin-inline: calc(50% - 50vw);
+	}
+
+	.carousel {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+
+		&>* {
+			scroll-snap-align: start;
+			flex: 0 0 var(--size, min(80vw, 300px));
+		}
 	}
 
 	/* richtext */

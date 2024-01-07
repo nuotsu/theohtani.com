@@ -4,7 +4,7 @@
 
 		{#if $emoji}
 			<output class="block text-xl text-blue anim-fade-to-r [&_button]:anim-fade">
-				Current: {#key $emoji}<Emoji emoji={$emoji} />{/key}
+				Filtering by {#key $emoji}<Emoji emoji={$emoji} />{/key}
 			</output>
 		{/if}
 	</header>

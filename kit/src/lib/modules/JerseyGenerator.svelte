@@ -1,57 +1,90 @@
-<section class="section grid md:grid-cols-2 gap-4">
+<section class="section grid md:grid-cols-2 items-start gap-8">
 	<header class="richtext">
 		<PortableText value={content} components={{}} />
+
+		<figure class="carousel gap-px [--size:100px] mt-4">
+			{#if loading}
+				<div class="grid place-content-center bg-blue text-white animate-pulse">Generating...</div>
+			{/if}
+
+			{#each urls as url (url)}
+				<a class="bg-blue/10" href={url} target="_blank">
+					<img src={url} alt="" />
+				</a>
+			{/each}
+
+			{#each images as image}
+				<a href={urlFor(image).auto('format').url()} target="_blank">
+					<img src={urlFor(image).width(200).auto('format').url()} alt="" />
+				</a>
+			{/each}
+		</figure>
 	</header>
 
-	<form class="grid" on:submit|preventDefault={generateJersey}>
-		<label>
-			OpenAI API key:
-			<input name="apiKey" type="text" placeholder="ski-{'*'.repeat(48)}" required />
+	<form class="grid grid-cols-2 gap-4" on:submit|preventDefault={generateJersey}>
+		<label class="col-span-full">
+			<p>OpenAI API key: <small>Use DALL·E 3 for better results</small></p>
+			<input
+				class="input"
+				name="apiKey"
+				type="password"
+				placeholder="ski-{'*'.repeat(48)}"
+				required
+			/>
 		</label>
 
 		<label>
 			Name on jersey:
-			<input name="name" type="text" placeholder="Ohtani" maxlength="15" required />
+			<input class="input" name="name" type="text" placeholder="OHTANI" maxlength="15" required />
 		</label>
 
 		<label>
 			Jersey number:
-			<input name="number" type="number" placeholder="17" min="0" max="9999" required />
+			<input
+				class="input"
+				name="number"
+				type="number"
+				placeholder="17"
+				min="0"
+				max="9999"
+				required
+			/>
 		</label>
 
-		<button class="action">Generate Jersey</button>
+		<button class="action gap-1 text-lg col-span-full" disabled={loading}>
+			<IconJersey />
+			Generate Jersey
+		</button>
 
-		{#if loading || error || url}
-			<div class="col-span-full">
-				{#if loading}
-					<div>Generating your jersey...</div>
-				{/if}
-
-				{#if error}
-					<p>Something went wrong. Please try again.</p>
-				{/if}
-
-				{#if url}
-					<a href={url}>
-						<img src={url} alt="Generated Jersey" />
-					</a>
-				{/if}
-			</div>
+		{#if error}
+			<p class="text-red">Something went wrong. Please try again.</p>
 		{/if}
 	</form>
 </section>
 
+<style lang="postcss">
+	label {
+		@apply grid gap-1;
+	}
+
+	a {
+		@apply transition-[filter] hover:brightness-125;
+	}
+</style>
+
 <script lang="ts">
 	import { PortableText } from '@portabletext/svelte'
 	import OpenAI from 'openai'
+	import IconJersey from '$lib/icons/IconJersey.svelte'
+	import { urlFor } from '$utils/sanity'
 
-	const { content, image } = $$props as Partial<{
+	const { content, images = [] } = $$props as Partial<{
 		content: any
-		image: Sanity.Image
+		images: Sanity.Image[]
 	}>
 
 	let loading = false
-	let url: string | undefined = undefined
+	let urls: string[] = []
 	let error = false
 
 	async function generateJersey({
@@ -73,15 +106,17 @@
 				prompt: `a photorealistic product photography shot of a Dodgers Jersey (back-side)
 				with the name "${data.get('name')}" in all caps and the number "${data.get('number')}".
 				The jersey is laid on a table with a blue backdrop.
-				The photograph is slightly angled for aesthetic purposes.`,
+				The photograph is slightly angled for aesthetic purposes, and should not be a 3D render but extremely photorealistic.`,
 				n: 1,
 				style: 'natural',
 				size: '1024x1024',
 			})
 
+			if (!response?.data?.[0].url) throw new Error()
+
 			currentTarget.reset()
 			loading = false
-			url = response.data[0].url
+			urls = [response.data[0].url, ...urls]
 		} catch {
 			loading = false
 			error = true

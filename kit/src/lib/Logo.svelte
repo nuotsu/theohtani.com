@@ -1,6 +1,6 @@
 <a
 	href="/"
-	class="relative max-w-max grid uppercase text-blue text-center font-bold {className}"
+	class="select-none relative max-w-max grid uppercase text-blue text-center font-bold {className}"
 	aria-label={$page.data.site.title}
 >
 	<small>The</small>

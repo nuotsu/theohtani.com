@@ -3,9 +3,9 @@
 		<PortableText value={content} components={{}} />
 	</header>
 
-	<ul class="flex gap-4 pb-3 snap-x snap-mandatory overflow-x-auto max-md:full-bleed max-md:px-4">
+	<ul class="carousel gap-4 pb-3 max-md:full-bleed max-md:px-4">
 		{#each $page.data.news as news}
-			<li class="snap-start scroll-ml-4 grow-0 shrink-0 basis-[min(80vw,300px)]">
+			<li class="scroll-ml-4">
 				<a class="group grid gap-2" href={news.url} target="_blank">
 					<figure class="transition-[filter] group-hover:brightness-125 bg-blue/10">
 						<img
@@ -18,7 +18,10 @@
 						/>
 					</figure>
 
-					<h3 class="h3">{news.headline}</h3>
+					<h3 class="h3 font-bold text-blue line-clamp-2">
+						{news.headline}
+					</h3>
+
 					<p class="text-sm">
 						<time datetime={news.published}>
 							{format(new Date(news.published))}

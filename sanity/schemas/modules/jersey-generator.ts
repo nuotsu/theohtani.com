@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { VscJersey } from 'react-icons/vsc'
 import { getBlockText } from '../../src/utils'
 
@@ -14,25 +14,20 @@ export default defineType({
 			of: [{ type: 'block' }],
 		}),
 		defineField({
-			name: 'image',
-			type: 'image',
-			fields: [
-				defineField({
-					name: 'alt',
-					type: 'string',
-				}),
-			],
+			name: 'images',
+			type: 'array',
+			of: [defineArrayMember({ type: 'image' })],
 		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
-			media: 'image',
+			images: 'images',
 		},
-		prepare: ({ content, media }) => ({
+		prepare: ({ content, images }) => ({
 			title: getBlockText(content),
 			subtitle: 'Jersey generator',
-			media,
+			media: images?.[0],
 		}),
 	},
 })
