@@ -21,7 +21,8 @@
 		<PortableText value={site.disclaimer} components={{}} />
 	</div>
 	<p class="text-blue">
-		&copy; {new Date().getFullYear()} <a href="/" data-sveltekit-reload>{site.title}</a>
+		&copy; {new Date().getFullYear()}
+		<a class="hover:underline" href="/" data-sveltekit-reload>{site.title}</a>
 	</p>
 </footer>
 

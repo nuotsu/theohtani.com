@@ -3,7 +3,7 @@
 		<PortableText value={content} components={{}} />
 
 		{#if $emoji}
-			<output class="block text-xl text-blue anim-fade-to-r [&_button]:anim-fade">
+			<output class="pill mt-2 text-lg anim-fade-to-r [&_button]:anim-fade">
 				Filtering by {#key $emoji}<Emoji emoji={$emoji} />{/key}
 			</output>
 		{/if}

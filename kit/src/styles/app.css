@@ -19,6 +19,7 @@
 
 	._h {
 		text-wrap: balance;
+		font-weight: bold;
 	}
 
 	.h1 {
@@ -46,6 +47,7 @@
 		padding: .2em .8em;
 		background: theme('colors.blue');
 		color: #fff;
+		font-weight: bold;
 
 		@apply clipped;
 
@@ -67,6 +69,12 @@
 
 	.section {
 		@apply max-w-screen-lg mx-auto p-8 max-md:px-4 md:py-12;
+	}
+
+	.pill {
+		padding: 0 .75em;
+		gap: 0.25em;
+		@apply inline-flex bg-blue/10 text-blue rounded-full;
 	}
 }
 

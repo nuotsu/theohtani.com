@@ -23,7 +23,7 @@
 
 	<form class="grid sm:grid-cols-2 gap-4" on:submit|preventDefault={generateJersey}>
 		<label>
-			Name on jersey:
+			<b>Name on jersey:</b>
 			<input
 				class="input text-xl"
 				name="name"
@@ -35,7 +35,7 @@
 		</label>
 
 		<label>
-			Jersey number:
+			<b>Jersey number:</b>
 			<input
 				class="input text-xl"
 				name="number"
@@ -48,11 +48,14 @@
 		</label>
 
 		<label class="col-span-full">
-			<p>OpenAI API key: <small>Use DALL·E 3 for better results</small></p>
+			<p><b>OpenAI API key:</b> <small>Use DALL·E 3 for better results</small></p>
 			<input class="input" name="apiKey" type="password" required />
 		</label>
 
-		<button class="action gap-1 text-lg col-span-full" disabled={loading}>
+		<button
+			class="action gap-1 text-lg col-span-full transition-filter hover:brightness-125"
+			disabled={loading}
+		>
 			<IconJersey />
 			Generate Jersey
 		</button>
